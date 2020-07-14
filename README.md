@@ -1,6 +1,6 @@
-# PUDIM - Palavreado Universal Didático de Instruções MIPS
+# P.U.D.I.M.
 
-<h1>Programa para a disciplina de Organizacao de Computares</h1>
+<h1>Palavreado Universal Didático de Instruções MIPS</h1>
 
 <p>
    
