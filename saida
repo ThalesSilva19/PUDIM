@@ -1,0 +1,18 @@
+.text
+.globl main
+main:
+	 li $t3 , 15 
+	 li $t0 , 1 
+	 li $t1 , 1 
+	 li $t4 , 1 
+loop:
+	 add $t2 , $t0 , $t1 
+	 move $t0 , $t1 
+	 move $t1 , $t2 
+	 sub $t3 , $t3 , $t4 
+	 bgtz $t3 , loop 
+	 li $v0 , 1 
+	 move $a0 , $t1 
+	 syscall 
+	 li $v0 , 10 
+	 syscall 

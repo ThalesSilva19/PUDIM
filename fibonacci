@@ -1,0 +1,25 @@
+REG a = t0
+REG b = t1
+REG c = t2
+REG i = t3
+REG um = t4
+
+i = 15
+a = 1
+b = 1
+um = 1
+
+MARK loop
+    c = a + b
+    a = b
+    b = c
+    i = i - um
+
+    IF i > 0 GOTO loop
+
+    v0 = 1
+    a0 = b
+    SYSTEM
+
+    v0 = 10
+    SYSTEM

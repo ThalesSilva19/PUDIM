@@ -1,7 +1,7 @@
 import sys
 import leitura
 import logica
-import escrita
+
 
 if __name__ == "__main__":
 
@@ -10,12 +10,13 @@ if __name__ == "__main__":
 	entrada = open(sys.argv[1],"r")
 	saida = open(sys.argv[2],"w")
 
-	escrita.tipoR(0,19,14,7,0,2)
-	escrita.tipoI(12,19,14,34)
-	escrita.tipoJ(0,1345)
+	print(".text")
+	print(".globl main")
+	print("main:")
 
 	for linha in entrada:
 		palavras = leitura.separaPalavras(linha) 
-		print(palavras)
-		#for comando in logica.comandos:
-		#	comando.verificar(palavras)
+		#print(palavras)
+		for comando in logica.comandos:
+			if comando.verificar(palavras):
+				break
