@@ -1,4 +1,4 @@
-# PUDIM
+# PUDIM - Palavreado Universal Didático de Instruções MIPS
 
 <h1>Programa para a disciplina de Organizacao de Computares</h1>
 
