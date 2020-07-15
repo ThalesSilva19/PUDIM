@@ -1,5 +1,5 @@
 registradores = {
-	"0":'$zero',
+	'0':'$zero',
 	"at":'$at',
 	"v0":'$v0',
 	"v1":'$v1',

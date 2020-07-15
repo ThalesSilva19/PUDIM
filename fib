@@ -1,0 +1,29 @@
+REG palavra = t0
+REG fim = t1
+
+palavra = MALLOC(100)
+palavra = READ_STRING(100)
+
+fim = palavra
+
+MARK enquanto
+    fim = fim + 1
+    t2 (byte) = fim[0]
+    IF t2 != 0 GOTO enquanto
+	#IF fim != t1 GOTO crashboguedeba 
+
+REG comeco = t2
+comeco = palavra
+
+MARK palindrome
+    t3 (byte) = comeco[0]
+    t4 (byte) = fim[0]
+    IF t3 == t4 GOTO palindrome
+
+IF fim == 0 GOTO sucesso
+    PRINT_INT 0
+    EXIT
+MARK sucesso
+    PRINT_INT fim
+    EXIT
+

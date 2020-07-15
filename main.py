@@ -10,13 +10,23 @@ if __name__ == "__main__":
 	entrada = open(sys.argv[1],"r")
 	saida = open(sys.argv[2],"w")
 
-	print(".text")
-	print(".globl main")
-	print("main:")
+	saida.write(".text\n")
+	saida.write(".globl main\n")
+	saida.write("main:\n")
 
 	for linha in entrada:
-		palavras = leitura.separaPalavras(linha) 
-		#print(palavras)
-		for comando in logica.comandos:
-			if comando.verificar(palavras):
-				break
+		palavras = leitura.separaPalavras(linha)
+		achou = False
+		i = 0
+		while not achou and i < len(logica.comandos):
+			if logica.comandos[i].verificar(saida,palavras):
+				achou = True
+			i = i + 1
+		if not achou:
+			print("Erro!\nLinha não indentificada:"  + linha ,end='')
+			print(palavras)
+			exit(1)
+	for marca in logica.marcadores:
+		if not logica.marcadores[marca]:
+			print("Marcador com nome \"" + marca + "\" não foi criado")
+			exit(1)

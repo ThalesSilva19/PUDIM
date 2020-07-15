@@ -1,0 +1,34 @@
+.text
+.globl main
+main:
+
+	addi $v0, $0, 9
+		addi $a0,$0, 100 
+	syscall
+		add  reg1,$0,$v1 
+	addi $v0, $0, 8
+		add $a0, $t0 ,$0
+		add1 $a1,$0 100 
+	syscall 
+	move $t1 , $t0 
+enquanto:
+	addi $t1 , $t1 , 1 
+	lw $t2 , $t1 , 0 
+	bne $t2 , $zero , enquanto 
+	move $t2 , $t0 
+palindrome:
+	lw $t3 , $t2 , 0 
+	lw $t4 , $t1 , 0 
+	beq $t3 , $t4 , palindrome 
+		beq $t1 , $zero , sucesso 
+	addi $v0, $0, 1
+	addi $a0, $zero ,$0
+	syscall 
+	addi $v0, $0, 10
+		syscall 
+sucesso:
+	addi $v0, $0, 1
+	addi $a0, $t1 ,$0
+	syscall 
+	addi $v0, $0, 10
+	syscall 

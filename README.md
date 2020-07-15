@@ -1,6 +1,6 @@
 <html>
 # P.U.D.I.M.
-<h1>Palavreado Universal Didático de Instruções MIPS</h1>
+# Palavreado Universal Didático de Instruções MIPS</h1>
 
 <h2>Para converter para MIPS digite:</h2>
 
@@ -91,68 +91,3 @@ O objetivo do programa é criar uma linguagem mais facilitada para que, as pesso
 		<tr><td>EXIT</td><td>addi $v0, $0, 10<br>syscall</td></tr>
 	</table>
 </div>
-
-<style>
-	* {
-		margin: 0;
-		padding: 0;	
-	}
-
-	.codigo {
-		margin: 16px;
-	}
-
-	h1 h2 h3 h4 h5 {
-		text-align: justify;
-		text-justify: inter-word;
-		
-	}
-	h1 {
-		margin: 32px 0;
-		font-size: 26px;
-		font-weight: 700;
-	}
-
-	h2 {
-		margin: 24px 0;
-		font-size: 22px;
-		font-weight: 700;
-	}
-
-	h3 {
-		margin: 16px 0;
-		font-size: 18px;
-		font-weight: 700;
-	}
-
-	p {
-		margin: 8px 2vw;
-		text-align: justify;
-		text-justify: inter-word;
-		font-size: 14px;
-	}
-
-	li {
-		margin: 4px 3vw;
-	}
-
-	.tabelas {
-		display: flex;
-		flex-direction: column;
-	}
-    .tabelas table {
-		flex: 1;
-		border: solid 2px #E0E0E0;
-		margin: 0 2vw 32px 2vw;
-	}
-	.tabelas .cabecalho {
-		text-align: center;
-		font-size: 18px;
-		font-weight: 700;
-	}
-	.tabelas table td {
-		width: 15vw;
-		border: solid 1px #E0E0E0;
-	}
-</style>
-</html>

@@ -2,13 +2,13 @@
 
 #Verifica se o parametro eh uma letra ou numero
 def letraOuNumero(c):
-	return ( 'A' <= c and c <= 'Z') or ('a' <= c and c <= 'z') or ('0' <= c and c <= '9')  
+	return ('A' <= c and c <= 'Z') or ('a' <= c and c <= 'z') or ('0' <= c and c <= '9') or (c == '_') 
 
 def duplos(c):
-	return c in ['=','!','>','<']
+	return c in ['erro','=','!','>','<']
 
 def especiais(c):
-	return c in ['+','-','*','/','(',')','=','%',':']
+	return c in ['+','-','*','/','(',')','%',':','[',']']
 
 def separaPalavras(linha):
 

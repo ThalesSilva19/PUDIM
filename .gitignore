@@ -1,0 +1,4 @@
+*.pyc
+*.out
+saida
+__pycache__/
