@@ -1,3 +1,4 @@
+<html>
 # P.U.D.I.M.
 <h1>Palavreado Universal Didático de Instruções MIPS</h1>
 
@@ -154,3 +155,4 @@ O objetivo do programa é criar uma linguagem mais facilitada para que, as pesso
 		border: solid 1px #E0E0E0;
 	}
 </style>
+</html>
