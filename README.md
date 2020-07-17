@@ -35,11 +35,13 @@ spim -f nome_arquivo_saida
 <div>
 </div>
 
-<h2>Guia Rápido<h2>
+<h2>Guia Rápido</h2>
 	<p>Para usar PUDIM você precisa criar um arquivo de texto com o código. No editor de texto de sua preferência inicie crie um arquivo com o nome que desejar para o seu programa. Se você quiser ser formal pode usar a extensão .pudim, mas não vai fazer diferença nenhuma na prática.<br>
 	PUDIM tem 3 tipos de elementos: registradores, maracadores(labels) e imediatos.<br>
 	<b>Registradores:<b>
 	São variaveis de 32 bits, podem representar numeros inteiros, caracteres ou posições na memória. Você pode usar os 32 registradores da arquitetura MIPS, em PUDIM eles tem os nomes 0, at, v0, v1, a0, a1, a2, a3, t0, t1, t2, t3, t4, t5, t6, t7, s0, s1, s2, s3, s4, s5, s6, s7, t8, t9, k0, k1, gp, sp, fp e ra. Recomendamos não usar o t9 porque usamos ele como auxiliar.
+		
+</p>
 
 <h2>Segue a documentação da linguagem</h2>
 
