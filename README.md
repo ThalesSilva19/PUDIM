@@ -36,12 +36,70 @@ spim -f nome_arquivo_saida
 </div>
 
 <h2>Guia Rápido</h2>
-	<p>Para usar PUDIM você precisa criar um arquivo de texto com o código. No editor de texto de sua preferência inicie crie um arquivo com o nome que desejar para o seu programa. Se você quiser ser formal pode usar a extensão .pudim, mas não vai fazer diferença nenhuma na prática.<br>
-	PUDIM tem 3 tipos de elementos: registradores, maracadores(labels) e imediatos.<br>
-	<b>Registradores:</b>
-	São variaveis de 32 bits, podem representar numeros inteiros, caracteres ou posições na memória. Você pode usar os 32 registradores da arquitetura MIPS, em PUDIM eles tem os nomes 0, at, v0, v1, a0, a1, a2, a3, t0, t1, t2, t3, t4, t5, t6, t7, s0, s1, s2, s3, s4, s5, s6, s7, t8, t9, k0, k1, gp, sp, fp e ra. Recomendamos não usar o t9 porque usamos ele como auxiliar.
-		
-</p>
+Para usar PUDIM você precisa criar um arquivo de texto com o código. No editor de texto de sua preferência inicie crie um arquivo com o nome que desejar para o seu programa. Se você quiser ser formal pode usar a extensão .pudim, mas não vai fazer diferença nenhuma na prática.<br>
+PUDIM tem 3 tipos de elementos: registradores, maracadores(labels) e imediatos.
+
+**Registradores:**
+São variaveis de 32 bits, podem representar numeros inteiros, caracteres ou posições na memória. Você pode usar os 32 registradores da arquitetura MIPS, em PUDIM eles tem os nomes 0, at, v0, v1, a0, a1, a2, a3, t0, t1, t2, t3, t4, t5, t6, t7, s0, s1, s2, s3, s4, s5, s6, s7, t8, t9, k0, k1, gp, sp, fp e ra, mas recomendamos não usar o t9 porque usamos ele como auxiliar.
+Você também pode dar apelido para os registradores usando a sintaxe:
+``` 
+REG  apelido = nome
+```
+Por exemplo:
+	
+```  
+REG  inicio = t0
+```
+
+**Marcadores (Labels):**
+Marcadores marcam uma linha do código, eles são usados nas instruções de desvio (as que tem GOTO).
+Para definir um marcador use a sintaxe:
+```  
+MARK nome_do_marcador
+```
+Marcadores também podem apontar para a seção de dados .data, aonde você pode definir Strings de duas maneiras:
+Escrevendo alguma coisa entre aspas (automáticamente salva no .data e recupera e substitui pelo endereço), por exemplo:	
+```  
+PRINT_STRING "Hello World!!!"
+```
+ou definindo um apelido para ela:
+```  
+STRING texto =  "Algum texto bem comprido que eu vou precisar usar várias vezes em lugares diferentes do código, mas tenho preguiça de ficar escrevendo"
+```
+Obs: Strings sempre são finalizadas por \0
+
+**Imediatos:**
+Imediatos são números usados no programa que não dependem da execução, para defini-los basta escrever o número. Por exemplo: 23, 56 ou 38.
+Obs: Como 0 é o nome de um registrador nunca podemos usar ele como imediato, porque o registrador 0 sempre tem valor de zero.
+
+**Operações:**
+Em pudim você só pode fazer uma operação por linha, e você escreve com os símbolos = + - / * , por exemplo:
+```
+t0 = a + b
+```
+onde a e b podem ser dois registradores ou um registador e um imediato.
+
+**Acessando a memória**
+Você ler a memória com a seguinte sintáxe:
+```
+t2 = t1[0]
+```
+Isso vai ler a linha que tem posição com o valor de t1 + 0 da memória e salvar em t2
+
+Para escrever na memória use:
+```
+t1[0] = t2
+```
+Você pode adicionar (half) ou (byte) se não quiser ler a linha inteira.
+```
+t1[0] = (byte) t2
+i (half) = a[2]
+```
+
+**Chamadas de Sistema**
+As chamadas de sistema são as mesmas que as de MIPS. Mas em PUDIM tem algumas pseudo instruções que economizam algumas linhas.
+Obs: Elas podem interferir no uso dos registradores a0,a1,v0,v1.
+Obs2: Não necessáriamente elas vão ser traduzidas para MIPS com o mínimo de instruções possível, se estiver preocupado com isso não use pseudo instruções.
 
 <h2>Segue a documentação da linguagem</h2>
 
