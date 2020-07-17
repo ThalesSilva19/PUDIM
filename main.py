@@ -10,10 +10,6 @@ if __name__ == "__main__":
 	entrada = open(sys.argv[1],"r")
 	saida = open(sys.argv[2],"w")
 
-	saida.write(".text\n")
-	saida.write(".globl main\n")
-	saida.write("main:\n")
-
 	for linha in entrada:
 		palavras = leitura.separaPalavras(linha)
 		achou = False
@@ -30,3 +26,5 @@ if __name__ == "__main__":
 		if not logica.marcadores[marca]:
 			print("Marcador com nome \"" + marca + "\" não foi criado")
 			exit(1)
+
+	saida.write(logica.data + logica.text)

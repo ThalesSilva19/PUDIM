@@ -1,0 +1,22 @@
+{
+    "name": "site",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.py",
+    "scripts": {
+      "compile": "python3 main.py nome_arquivo_entrada nome_arquivo_saida",
+      "run": "spim -f nome_arquivo_saida"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ThalesSilva19/mipsPython.git"
+    },
+    "author": "Bruno, Fran, Savio, Thales",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/ThalesSilva19/mipsPython.git"
+    },
+    "homepage": "https://github.com/ThalesSilva19/mipsPython.git",
+    "dependencies": {
+    }
+}

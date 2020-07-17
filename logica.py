@@ -1,6 +1,9 @@
 from registradores import registradores
 
 marcadores = {}
+strings = {}
+data = '.data\n'
+text = '.text\n.globl main\nmain:\n'
 
 class Comando: 
 	def __init__(self,output,input):
@@ -8,6 +11,8 @@ class Comando:
 		self.output = output
 
 	def verificar(self, arquivo,vetor):
+		global text
+		global data
 		flag = len(vetor) == len(self.input)
 		i = 0
 		regs = [-1,-1,-1]
@@ -16,12 +21,17 @@ class Comando:
 		mark = ""
 		if len(vetor) == 0:
 			return True
+		if vetor[0] == 'STRING' and vetor[2] == '=':
+			i = str(len(strings))
+			strings[vetor[1]] = 'string' + i
+			data += 'string'+ i +': .asciiz ' + vetor[3] + '\n'
+			return True
 		if vetor[0] == 'REG' and vetor[2] == '=':
 			registradores[vetor[1]] = registradores[vetor[3]]
 			return True
 		if vetor[0] == 'MARK':
 			marcadores[vetor[1]] = True
-			arquivo.write(vetor[1] + ':\n')
+			text += vetor[1] + ':\n'
 			return True
 		while flag and i < len(vetor):
 			if self.input[i] == "reg":
@@ -29,12 +39,18 @@ class Comando:
 				if flag:
 					regs[reg] = registradores[vetor[i]]
 					reg = reg + 1
+			elif self.input[i] == "marcador":
+				if string(vetor[i]):
+					mark = strings[vetor[i]]
+					flag = True
+				elif marcador(vetor[i]):
+					mark = vetor[i]
+					flag = True
+				else:
+					flag = False
 			elif self.input[i] == "imme":
 				flag = imediato(vetor[i])
 				imme = vetor[i]
-			elif self.input[i] == "marcador":
-				flag = marcador(vetor[i])
-				mark = vetor[i]
 			else:
 				flag = self.input[i] == vetor[i]
 			i += 1
@@ -44,33 +60,23 @@ class Comando:
 		return False
 
 	def escrever(self,arquivo,regs,imme,mark):
-		arquivo.write('\t')
+		global text
+		global data
+		text += '\t'
 		for palavra in self.output:
-			print(palavra)
 			if palavra == "reg1":
-				arquivo.write(regs[0]+' ')
+				text += regs[0]+' '
 			elif palavra == "reg2":
-				arquivo.write(regs[1]+' ')
+				text += regs[1]+' '
 			elif palavra == "reg3":
-				arquivo.write(regs[2]+' ')
+				text += regs[2]+' '
 			elif palavra == "imme":
-				arquivo.write(imme+' ')
+				text += imme+' '
 			elif palavra == "marcador":
-				arquivo.write(mark+' ')
+				text += mark+' '
 			else:
-				arquivo.write(palavra+' ')
-		arquivo.write('\n')
-
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
-#,',',',',',',',',',',','
+				text += palavra+' '
+		text += '\n'
 
 comandos = [
 
@@ -79,7 +85,7 @@ comandos = [
 	Comando(['addi','reg1', ',','reg2', ',', 'imme'],['reg','=','reg','+','imme']),
 	
 	Comando(['sub', 'reg1', ',','reg2', ',', 'reg3'],['reg','=','reg','-','reg']),
-	Comando(['addi','reg1', ',','reg2', ',', '-','imme'],['reg','=','reg','-','imme']),
+	Comando(['addi $k0 $0','imme','\nsub','reg1',',','reg2',',$k0'],['reg','=','reg','-','imme']),
 
 	Comando(['mul', 'reg1', ',','reg2', ',', 'reg3'],['reg','=','reg','*','reg']),
 	Comando(['div', 'reg1', ',','reg2', ',', 'reg3'],['reg','=','reg','/','reg']),
@@ -92,10 +98,10 @@ comandos = [
 	# comparacoes
 	Comando(['bne',  'reg1', ',', 'reg2',',','marcador'],['IF','reg','!=','reg','GOTO','marcador']),
 	Comando(['beq',  'reg1', ',', 'reg2',',','marcador'],['IF','reg','==','reg','GOTO','marcador']),
-	Comando(['bgez', 'reg1', ',', 'marcador'],['IF','reg','>=','0','GOTO','marcador']),
-	Comando(['bgtz', 'reg1', ',', 'marcador'],['IF','reg','>','0','GOTO','marcador']),
-	Comando(['blez', 'reg1', ',', 'marcador'],['IF','reg','<=','0','GOTO','marcador']),
-	Comando(['bltz', 'reg1', ',', 'marcador'],['IF','reg','<','0','GOTO','marcador']),
+	Comando(['bge', 'reg1', ',','reg2', ',', 'marcador'],['IF','reg','>=','reg','GOTO','marcador']),
+	Comando(['bgt', 'reg1', ',','reg2', ',', 'marcador'],['IF','reg','>','reg','GOTO','marcador']),
+	Comando(['ble', 'reg1', ',','reg2', ',', 'marcador'],['IF','reg','<=','reg','GOTO','marcador']),
+	Comando(['blt', 'reg1', ',','reg2', ',', 'marcador'],['IF','reg','<','reg','GOTO','marcador']),
 
 	# pulos
 	Comando(['j','marcador'],['GOTO','marcador']),
@@ -118,8 +124,6 @@ comandos = [
 	Comando(['addi $v0, $0, 8\n\tadd $a0,','reg1',',$0\n\taddi $a1,$0,','imme','\n\tsyscall'],['reg','=','READ_STRING','(','imme',')']),
 	Comando(['addi $v0, $0, 9\n\taddi $a0,$0,','imme','\n\tsyscall\n\tadd ','reg1',',$0,$v0'],['reg','=','MALLOC','(','imme',')']),
 	Comando(['addi $v0, $0, 9\n\tadd $a0,$0','reg2','\n\tsyscall\n\tadd ','reg1',',$0,$v0'],['reg','=','MALLOC','(','reg',')'])
-	
-]
 ]
 
 def registador(reg):
@@ -128,10 +132,25 @@ def registador(reg):
 def imediato(imme):
 	return imme.isnumeric()
 
-def marcador (marca):
+def string (marca):
+	global data
+	print(marca[0])
+	if marca in strings:
+		return True
+	if marca[0] == "\"":
+		print("banana")
+		i = str(len(strings))
+		strings[marca] = "string" + i
+		data += 'string'+ i +': .asciiz ' + marca + '\n'
+		print("maracuja")
+		return True
+	return False
+
+def marcador(marca):
 	if marca in marcadores:
 		return True
-	if not registador(marca) and not imediato(marca):
+	if not registador(marca) and not imediato(marca) and not string(marca):
+		print("entrei no marcador:"+ marca)
 		marcadores[marca] = False
 		return True
 	return False

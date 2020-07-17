@@ -14,12 +14,28 @@ def separaPalavras(linha):
 
 	palavras = []
 	palavra = ""
+	aspas = False
 	duplo = False
 		
 	for c in linha:
 
+		if aspas:
+			palavra += c
+			if c == '"':
+				palavras.append(palavra)
+				palavra = ""
+				aspas = False
+			continue 
+
+		if c == '"':
+			if palavra != "":
+				palavras.append(palavra)
+			palavra = '"'	
+			aspas = True
+
 		if duplo:
 			duplo = False
+
 			if c == '=':
 				palavra += c
 				palavras.append(palavra)
