@@ -9,12 +9,13 @@ O objetivo do programa é criar uma linguagem mais facilitada para que, as pesso
 
 ### Pre requisitos do sistema:
 
-python3 e spim
+- python3 
+- spim (pode usar outros simuladores de mips, mas a gente usa spim)
 
 ### Para instalar utilize:
 
-```
-sudo apt install python3 && sudo apt install spim
+```bash
+sudo apt install python3 && sudo apt install spim && git fetch https://github.com/ThalesSilva19/mipsPython
 ```
 
 <h2>Para converter para MIPS digite:</h2>
@@ -34,6 +35,12 @@ spim -f nome_arquivo_saida
 <div>
 </div>
 
+<h2>Guia Rápido<h2>
+	<p>Para usar PUDIM você precisa criar um arquivo de texto com o código. No editor de texto de sua preferência inicie crie um arquivo com o nome que desejar para o seu programa. Se você quiser ser formal pode usar a extensão .pudim, mas não vai fazer diferença nenhuma na prática.<br>
+	PUDIM tem 3 tipos de elementos: registradores, maracadores(labels) e imediatos.<br>
+	<b>Registradores:<b>
+	São variaveis de 32 bits, podem representar numeros inteiros, caracteres ou posições na memória. Você pode usar os 32 registradores da arquitetura MIPS, em PUDIM eles tem os nomes 0, at, v0, v1, a0, a1, a2, a3, t0, t1, t2, t3, t4, t5, t6, t7, s0, s1, s2, s3, s4, s5, s6, s7, t8, t9, k0, k1, gp, sp, fp e ra. Recomendamos não usar o t9 porque usamos ele como auxiliar.
+
 <h2>Segue a documentação da linguagem</h2>
 
 <div>
@@ -42,7 +49,7 @@ spim -f nome_arquivo_saida
 	<table>
 		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
 		<tr><td>regDest = reg1</td><td>move regDest, reg1</td></tr>
-		<tr><td>regDest = imme</td><td>addi regDest, 0, imme</td></tr>
+		<tr><td>regDest = imme</td><td>addi regDest, 0, imme</td></tr>32
 		<tr><td>regDest = reg1 + reg2</td><td>add regDest, reg1, reg2</td></tr>
 		<tr><td>regDest = reg1 + imme</td><td>addi regDest, reg1, imme</td></tr>
 		<tr><td>regDest = reg1 - reg2</td><td>sub regDest, reg1, reg2</td></tr>
