@@ -36,10 +36,10 @@ final = comeco - 10
 ## Operações
 As operações posiveis são:
 
-* +   Adição
-* -   Subtração
+* \+   Adição
+* \-   Subtração
 * /   Divisão
-* *   Multiplicação
+* \*   Multiplicação
 * %   Módulo
 * AND E binário
 * OR  Ou binário
