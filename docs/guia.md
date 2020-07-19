@@ -1,5 +1,5 @@
-
 # Guia Rápido
+
 Para usar PUDIM você precisa criar um arquivo de texto com o código. No editor de texto de sua preferência inicie crie um arquivo com o nome que desejar para o seu programa. Se você quiser ser formal pode usar a extensão .pudim, mas não vai fazer diferença nenhuma na prática
 
 ## Registradores:
@@ -41,14 +41,11 @@ As operações posiveis são:
 * /   Divisão
 * \*   Multiplicação
 * %   Módulo
-* AND E binário
-* OR  Ou binário
-* XOR Ou exclusivo binário
 
 Os operandos podem ser registradores, ou valores imediatos (números escritos diretamente no código).
 Pelo menos um deles precisa ser registrador, se quiser fazer uma operação entre dois imediatos, faça em sua calculadora e escreva o resultado como imediato ao invés.
 
-Para uma lista mais detalhada das operações veja a [documentação](documentacao.md).
+Para uma lista mais detalhada das operações veja a [documentação](docs/documentacao.md).
 PUDIM não faz operações com números sem sinal (unsigned) ou de ponto flutuante.
 
 ## Desvios Incondicionais
@@ -151,3 +148,6 @@ Lê um string da entrada e salva em um registrador, respeitando um tamanho máxi
 
 ### reg = MALLOC(tamanho)
 Salva em reg o endereço de um bloco da memória heap.
+
+### EXIT
+Encera o programa, o spim reclama se você não usar.

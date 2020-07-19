@@ -1,0 +1,38 @@
+REG a = t0
+REG b = t1
+REG entrada_a = t2
+REG entrada_b = t3
+REG swap = t4
+
+PRINT_STRING "1º numero:"
+entrada_a = READ_INT
+a = entrada_a
+PRINT_STRING "2º numero:"
+entrada_b = READ_INT
+b = entrada_b
+
+IF a < b GOTO else
+	swap = a
+	a = b
+	b = swap
+MARK else
+
+MARK loop:
+	swap = a % b
+	a = b
+	b = swap
+IF b != 0 GOTO loop
+
+REG mmc = t1
+t5 = entrada_a*entrada_b
+mmc = t5/a
+
+PRINT_STRING "O MMC é "
+PRINT_INT mmc
+PRINT_STRING "\nO MDC é "
+PRINT_INT a
+PRINT_STRING "\n"
+
+EXIT
+
+	

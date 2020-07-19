@@ -1,25 +1,28 @@
 REG a = t0
 REG b = t1
 REG c = t2
-REG i = t3
-REG um = t4
+REG contador = t3
+REG entrada = t4
 
-i = 15
+entrada = READ_INT
+
 a = 1
 b = 1
-um = 1
+
+contador = entrada
 
 MARK loop
     c = a + b
     a = b
     b = c
-    i = i - um
+    contador = contador - 1
+	
+	IF contador > 0 GOTO loop
 
-    IF i > 0 GOTO loop
+	PRINT_STRING "O "
+	PRINT_INT entrada
+	PRINT_STRING "º número da sequncia de fiboncci é "
+	PRINT_INT a 
+	PRINT_STRING "\n"
 
-    v0 = 1
-    a0 = b
-    SYSTEM
-
-    v0 = 10
-    SYSTEM
+    EXIT
