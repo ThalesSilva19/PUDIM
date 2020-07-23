@@ -2,7 +2,7 @@ import codigo.logica as logica
 
 comandos = [
 
-	# operacoes aritmeticas
+	#atribuições aritméticas
 	logica.Comando(['add ', 'reg1', ',','reg2', ',', 'reg3'],['reg','=','reg','+','reg']),
 	logica.Comando(['addi ','reg1', ',','reg2', ',', 'imme'],['reg','=','reg','+','imme']),
 	logica.Comando(['sub ', 'reg1', ',','reg2', ',', 'reg3'],['reg','=','reg','-','reg']),
@@ -21,7 +21,7 @@ comandos = [
 	logica.Comando(['move ','reg1',',','reg2'],['reg','=','reg']),
 	logica.Comando(['la ','reg1',',','marcador'],['reg','=','marcador']),
 	
-	# comparacoes
+	#Operadores condicionais
 	logica.Comando(['bne ',  'reg1', ',', 'reg2',',','marcador'],['IF','reg','!=','reg','GOTO','marcador']),
 	logica.Comando(['addi $t9,$0,','imme','\n\tbne ','reg1',',$t9,','marcador'],['IF','reg','!=','imme','GOTO','marcador']),
 	logica.Comando(['beq ',  'reg1', ',', 'reg2',',','marcador'],['IF','reg','==','reg','GOTO','marcador']),
@@ -35,7 +35,7 @@ comandos = [
 	logica.Comando(['blt ', 'reg1', ',','reg2', ',', 'marcador'],['IF','reg','<','reg','GOTO','marcador']),
 	logica.Comando(['addi $t9,$0,','imme','\n\tblt ','reg1',',$t9,','marcador'],['IF','reg','<','imme','GOTO','marcador']),
 
-	# pulos
+	#Jumps
 	logica.Comando(['j ','marcador'],['GOTO','marcador']),
 	logica.Comando(['jr ', 'reg1'],['GOTO','reg']),
 	logica.Comando(['jal ', 'marcador'],['ra','=','GOTO','marcador']),
