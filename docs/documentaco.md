@@ -18,9 +18,14 @@
 		<tr><td>regDest = reg1 + imme</td><td>addi regDest, reg1, imme</td></tr>
 		<tr><td>regDest = reg1 - reg2</td><td>sub regDest, reg1, reg2</td></tr>
 		<tr><td>regDest = reg1 - imme</td><td>addi $at, 0, imme<br>sub regDest, reg1, $at</td></tr>
-		<tr><td>regDest = reg1 * reg2</td><td>mul reg1, reg2 <br> mflo regDest</td></tr>
-		<tr><td>regDest = reg1 / reg2</td><td>div reg1, reg2 <br> mflo regDest</td></tr>
-		<tr><td>regDest = reg1 % reg2</td><td>div reg1, reg2 <br> mfhi regDest</td></tr>
+		<tr><td>regDest = reg1 * reg2</td><td>mul regDest, reg1, reg2</td></tr>
+		<tr><td>regDest = reg1 * imme</td><td>addi $t9, $0, imme <br> mul regDest, reg1, $t9 </td></tr>
+		<tr><td>regDest = reg1 / reg2</td><td>div regDest, reg1, reg2</td></tr>
+		<tr><td>regDest = reg1 / imme</td><td>addi $t9, $0, imme <br> div regDest, reg1, $t9</td></tr>
+		<tr><td>regDest = imme / reg1</td><td>addi $t9, $0, imme <br> div regDest, %t9, reg1</td></tr>
+		<tr><td>regDest = reg1 % reg2</td><td>rem regDest, reg1, reg2</td></tr>
+		<tr><td>regDest = reg1 % imme</td><td>addi $t9, $0, imme <br> rem regDest, reg1, $t9</td></tr>
+		<tr><td>regDest = imme % reg1</td><td>addi $t9, $0, imme <br> rem regDest, $t9, reg1</td></tr>
 	</table>
 
 <h2>Atribuições Lógicas</h2>
@@ -38,13 +43,19 @@
 
 <h2>Operadores Condicionais</h2>
 	<table>
-		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
+	<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
 		<tr><td>IF reg1 != reg2 GOTO marcador</td><td>bne reg1, reg2, marcador</td></tr>
+		<tr><td>IF reg1 != imme GOTO marcador</td><td>addi $t9, $0, imme <br> bne reg1, $t9, marcador</td></tr>
 		<tr><td>IF reg1 == reg2 GOTO marcador</td><td>beq reg1, reg2, marcador</td></tr>
-		<tr><td>IF reg1 >= 0 GOTO marcador</td><td>bgez reg1, marcador</td></tr>
-		<tr><td>IF reg1 > 0 GOTO marcador</td><td>bgtz reg1, marcador</td></tr>
-		<tr><td>IF reg1 <= 0 GOTO marcador</td><td>blez reg1, marcador</td></tr>
-		<tr><td>IF reg1 < 0 GOTO marcador</td><td>bltz reg1, marcador</td></tr>
+		<tr><td>IF reg1 == imme GOTO marcador</td><td>addi $t9, $0, imme <br> beq reg1, $t9, marcador</td></tr>
+		<tr><td>IF reg1 >= reg2 GOTO marcador</td><td>bge reg1, reg2, marcador</td></tr>
+		<tr><td>IF reg1 >= imme GOTO marcador</td><td>addi $t9, $0, imme <br> bge reg1, $t9, marcador</td></tr>
+		<tr><td>IF reg1 > reg2 GOTO marcador</td><td>bgt reg1, reg2, marcador</td></tr>
+		<tr><td>IF reg1 > imme GOTO marcador</td><td>addi $t9, $0, imme <br> bgt reg1, $t9, marcador</td></tr>
+		<tr><td>IF reg1 <= reg2 GOTO marcador</td><td>ble reg1, reg2, marcador</td></tr>
+		<tr><td>IF reg1 <= imme GOTO marcador</td><td>addi $t9, $0, imme <br> ble reg1, $t9, marcador</td></tr>
+		<tr><td>IF reg1 < reg2 GOTO marcador</td><td>blt reg1, reg2, marcador</td></tr>
+		<tr><td>IF reg1 < imme GOTO marcador</td><td>addi $t9, $0, imme <br> blt reg1, $t9, marcador</td></tr>
 	</table>
 	
 <h2>Jumps</h2>
