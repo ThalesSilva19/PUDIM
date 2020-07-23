@@ -3,11 +3,17 @@
 
 <div>
 
-<h2>Operadores Aritméticos</h2>
+<h2>Atribuições Simples</h2>
 	<table>
 		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
 		<tr><td>regDest = reg1</td><td>move regDest, reg1</td></tr>
-		<tr><td>regDest = imme</td><td>addi regDest, 0, imme</td></tr>32
+		<tr><td>regDest = imme</td><td>addi regDest, 0, imme</td></tr>
+		<tr><td>regDest = marcador</td><td>la reg1, marcador</td></tr>
+	</table>
+
+<h2>Atribuições Aritméticas</h2>
+	<table>
+		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
 		<tr><td>regDest = reg1 + reg2</td><td>add regDest, reg1, reg2</td></tr>
 		<tr><td>regDest = reg1 + imme</td><td>addi regDest, reg1, imme</td></tr>
 		<tr><td>regDest = reg1 - reg2</td><td>sub regDest, reg1, reg2</td></tr>
@@ -17,7 +23,7 @@
 		<tr><td>regDest = reg1 % reg2</td><td>div reg1, reg2 <br> mfhi regDest</td></tr>
 	</table>
 
-<h2>Operadores Lógicos</h2>
+<h2>Atribuições Lógicas</h2>
 	<table>
 		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
 		<trW><td>regDest = reg1 AND reg2</td><td>and regDest, reg1, reg2</td></tr>
@@ -50,22 +56,27 @@
 	</table>
 
 <h2>Comandos do Sistema</h2>
+	<table>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
 	</table>
 
 <h2>Comandos do Sistema</h2>
+	<table>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
 	</table>
 
 <h2>Comandos do Sistema</h2>
+	<table>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
 	</table>
 
 <h2>Comandos do Sistema</h2>
+	<table>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
 	</table>
 
 <h2>Comandos do Sistema</h2>
+	<table>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
 	</table>
 
