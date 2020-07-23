@@ -53,31 +53,7 @@
 		<tr><td>GOTO marcador</td><td>j marcador</td></tr>
 		<tr><td>GOTO reg</td><td>jr reg</td></tr>
 		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
-	</table>
-
-<h2>Comandos do Sistema</h2>
-	<table>
-		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
-	</table>
-
-<h2>Comandos do Sistema</h2>
-	<table>
-		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
-	</table>
-
-<h2>Comandos do Sistema</h2>
-	<table>
-		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
-	</table>
-
-<h2>Comandos do Sistema</h2>
-	<table>
-		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
-	</table>
-
-<h2>Comandos do Sistema</h2>
-	<table>
-		<tr><td>ra = GOTO marcador</td><td>jal marcador</td></tr>
+		<tr><td>ra = GOTO reg</td><td>jalr reg</td></tr>
 	</table>
 
 <h2>Comandos do Sistema</h2>
