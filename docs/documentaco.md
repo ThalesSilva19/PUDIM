@@ -56,11 +56,17 @@
 		<tr><td>ra = GOTO reg</td><td>jalr reg</td></tr>
 	</table>
 
+<h2>Comandos da memória</h2>
+	<table>
+		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
+		<tr><td>regDest = reg1[imme]</td><td>lw regDest, imme(reg1)</td></tr>
+		<tr><td>regDest(byte) = reg1[imme]</td><td>lb regDest, imme(reg1)</td></tr>
+		<tr><td>reg2[imme] = reg1</td><td>sw reg1, imme(reg2)</td></tr>
+	</table>
+
 <h2>Comandos do Sistema</h2>
 	<table>
 		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
-		<tr><td>regDest = MEM(reg1 + imme)</td><td>lw regDest, imme(reg1)</td></tr>
-		<tr><td>MEM(reg2 + imme) = reg1</td><td>sw reg1, imme(reg2)</td></tr>
 		<tr><td>PRINT_INT reg1</td><td>addi $v0, $0, 1<br>addi $a0, reg1, $0<br>syscall</td></tr>
 		<tr><td>PRINT_STRING marcador</td><td>addi $v0, $0, 4<br>la $a0, marcador<br>syscall</td></tr>
 		<tr><td>PRINT_STRING reg1</td><td>addi $v0, $0, 4<br>add $a0, reg1, $0<br>syscall</td></tr>
