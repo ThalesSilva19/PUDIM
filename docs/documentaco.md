@@ -28,19 +28,6 @@
 		<tr><td>regDest = imme % reg1</td><td>addi $t9, $0, imme <br> rem regDest, $t9, reg1</td></tr>
 	</table>
 
-<h2>Atribuições Lógicas</h2>
-	<table>
-		<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
-		<trW><td>regDest = reg1 AND reg2</td><td>and regDest, reg1, reg2</td></tr>
-		<tr><td>regDest = reg1 AND imme</td><td>and regDest, reg1, imme</td></tr>
-		<tr><td>regDest = reg1 OR reg2</td><td>or regDest, reg1, reg2</td></tr>
-		<tr><td>regDest = reg1 OR imme</td><td>or regDest, reg1, imme</td></tr>
-		<tr><td>regDest = reg1 XOR reg2</td><td>xor regDest, reg1, reg2</td></tr>
-		<tr><td>regDest = reg1 XOR reg2</td><td>xor regDest, reg1, imme</td></tr>
-		<tr><td>regDest = reg1 NOR reg2</td><td>nor regDest, reg1, reg2</td></tr>
-		<tr><td>regDest = NOT reg1</td><td>nor regDest, reg1, reg2</td></tr>
-	</table>
-
 <h2>Operadores Condicionais</h2>
 	<table>
 	<tr><td><b>PUDIM</b></td><td><b>MIPS</b></td></tr>
